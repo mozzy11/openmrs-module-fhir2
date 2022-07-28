@@ -7,8 +7,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fhir2-integration-tests-2.2</artifactId>
-    <name>FHIR2 Integration Tests 2.2</name>
+    <artifactId>fhir2-e2e-tests</artifactId>
+    <name>FHIR2 End-to-End Tests</name>
+    <description>End-to-End Tests for the FHIR2 Module</description>
 
     <dependencies>
         <dependency>
@@ -22,17 +23,14 @@
             <scope>test</scope>
             <exclusions>
                 <exclusion>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                    <artifactId>jackson-databind</artifactId>
+                    <groupId>${project.parent.groupId}</groupId>
+                    <artifactId>${project.parent.artifactId}-api-2.1</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>${project.parent.groupId}</groupId>
+                    <artifactId>${project.parent.artifactId}-api-2.2</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>${project.parent.artifactId}-integration-tests</artifactId>
-            <version>${project.parent.version}</version>
-            <type>test-jar</type>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.openmrs.web</groupId>
@@ -54,6 +52,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
@@ -68,12 +70,6 @@
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
             <artifactId>hapi-fhir-validation-resources-dstu3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.12.6.1</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -108,9 +104,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <openmrsPlatformVersion>2.2.0</openmrsPlatformVersion>
-    </properties>
-
 </project>
